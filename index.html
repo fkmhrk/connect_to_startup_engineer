@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>駆け出しエンジニアと繋がれるか？</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/ractive"></script>
+    <style>
+      tr {
+        height: 80px;
+      }
+      td {
+        width: 80px;
+      }
+      button {
+        width: 100%;
+        height: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    <script id="template" type="text/ractive">
+      <h1>駆け出しエンジニアと繋がれるか？</h1>
+      <table>
+        <tbody>
+          <tr>
+            {{#values:i}}
+            <td>{{labels[values[i]]}}</td>
+            {{/}}
+          </tr>
+          <tr>
+            {{#running:i}}
+            <td><button on-click="['stop',i]" disabled="{{!running[i]}}">Stop</button></td>
+            {{/}}
+          </tr>
+        </tbody>
+      </table>
+      {{#if done}}
+      <div>
+        <a href="https://twitter.com/intent/tweet?text={{encodeURIComponent(result)}}&hashtags=%E9%A7%86%E3%81%91%E5%87%BA%E3%81%97%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%A8%E7%B9%8B%E3%81%8C%E3%82%8A%E3%81%9F%E3%81%84,%E9%A7%86%E3%81%91%E5%87%BA%E3%81%97%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%A8%E7%B9%8B%E3%81%8C%E3%82%8C%E3%82%8B%E3%81%8B&url=https%3A%2F%2Ffkmhrk.github.io%2Fconnect_to_startup_engineer">Tweet</a>
+      </div>
+      {{/if}}
+    </script>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
